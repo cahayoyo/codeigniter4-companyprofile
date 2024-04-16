@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Admin\DashboardController::index');
 
 // route admin dashboard
 $routes->get('/dashboard', 'Admin\DashboardController::index');
