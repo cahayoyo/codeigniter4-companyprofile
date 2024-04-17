@@ -11,6 +11,7 @@ use Psr\Log\LoggerInterface;
 
 // Use Model
 use App\Models\KategoriModel;
+use App\Models\ProductModel;
 
 /**
  * Class BaseController
@@ -59,5 +60,6 @@ abstract class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
 
         $this->KategoriModel = new KategoriModel();
+        $this->ProductModel = new ProductModel();
     }
 }

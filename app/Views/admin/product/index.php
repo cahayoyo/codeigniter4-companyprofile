@@ -10,20 +10,58 @@
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
-                    <p class="mb-0">
-                        This page is an example of using static navigation. By removing the
-                        <code>.sb-nav-fixed</code>
-                        class from the
-                        <code>body</code>
-                        , the top navigation and side navigation will become static on scroll. Scroll down this page to
-                        see an example.
-                    </p>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Daftar Produk
+                        </div>
+                        <div class="card-body">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary btn-sm mb-2" data-bs-toggle="modal"
+                                data-bs-target="#tambahModal">
+                                <i class="fas fa-plus"></i> Tambah
+                            </button>
+
+                            <!-- Alert Success -->
+                            <?php if (session('success')): ?>
+                                <div class="alert alert-success" role="alert">
+                                    <?= session('success'); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Produk</th>
+                                        <th>Kategori</th>
+                                        <th>Tanggal Input</th>
+                                        <th>Fungsi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 1; ?>
+                                    <?php foreach ($daftar_product as $product): ?>
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $product->nama_product; ?></td>
+                                            <td><?= $product->kategori_slug; ?></td>
+                                            <td><?= date('d/m/Y H:i:s', strtotime($product->tanggal_input)); ?></td>
+                                            <td width="15%" class="text-center">
+                                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                                    data-bs-target="#ubahModal<?= $product->id_product; ?>"><i
+                                                        class=" fas fa-edit"></i>Ubah</button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                    data-bs-target="#hapusModal<?= $product->id_product; ?>"><i
+                                                        class="fas fa-trash-alt"></i>Hapus</button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div style="height: 100vh"></div>
-            <div class="card mb-4">
-                <div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of
-                    the static navigation demo.</div>
             </div>
         </div>
     </main>

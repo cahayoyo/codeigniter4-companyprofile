@@ -13,6 +13,7 @@ class ProductController extends BaseController
     {
         $data = [
             'title' => 'Daftar Product',
+            'daftar_product' => $this->ProductModel->orderBy('id_product', 'DESC')->findAll()
         ];
         return view('admin/product/index', $data);
     }
