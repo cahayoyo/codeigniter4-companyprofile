@@ -107,7 +107,7 @@
                     <div class="modal-body">
                         <form action="<?= base_url('/daftar-kategori/ubah/' . $kategori->id_kategori) ?>" method="post">
                             <?= csrf_field() ?>
-
+                            <input type="hidden" name="_method" value="PUT">
                             <div class="mb-3">
                                 <label for="nama_kategori" class="form-label">Nama Kategori</label>
                                 <input type="text" class="form-control" id="nama_kategori" name="nama_kategori"
@@ -138,6 +138,7 @@
                     <div class="modal-body">
                         <form action="<?= base_url('/daftar-kategori/hapus/' . $kategori->id_kategori) ?>" method="post">
                             <?= csrf_field() ?>
+                            <input type="hidden" name="_method" value="DELETE">
                             <p>Yakin untuk hapus kategori <?= $kategori->nama_kategori; ?>?</p>
                     </div>
                     <div class="modal-footer">
