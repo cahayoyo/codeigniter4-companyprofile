@@ -17,10 +17,9 @@
                         </div>
                         <div class="card-body">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary btn-sm mb-2" data-bs-toggle="modal"
-                                data-bs-target="#tambahModal">
+                            <a href="<?= base_url('daftar-product/tambah') ?>" class="btn btn-primary btn-sm mb-2">
                                 <i class="fas fa-plus"></i> Tambah
-                            </button>
+                            </a>
 
                             <!-- Alert Success -->
                             <?php if (session('success')): ?>

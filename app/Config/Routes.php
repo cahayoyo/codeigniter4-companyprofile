@@ -12,6 +12,8 @@ $routes->get('/dashboard', 'Admin\DashboardController::index');
 
 // route admin product
 $routes->get('/daftar-product', 'Admin\ProductController::index');
+$routes->get('/daftar-product/tambah', 'Admin\ProductController::form_create');
+$routes->post('/daftar-product/create-product', 'Admin\ProductController::create_product');
 
 // route admin kategori product
 $routes->get('/daftar-kategori', 'Admin\ProductController::kategori');

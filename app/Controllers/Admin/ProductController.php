@@ -18,6 +18,32 @@ class ProductController extends BaseController
         return view('admin/product/index', $data);
     }
 
+    public function form_create()
+    {
+        $data = [
+            'title' => 'Tambah Product',
+            'kategori_product' => $this->KategoriModel->findAll(),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('admin/product/create', $data);
+    }
+
+    public function create_product()
+    {
+        // aturan validasi input
+        $rules = $this->validate([
+            'nama_product' => 'required',
+            'kategori_slug' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        // jika validasi gagal
+        if (!$rules) {
+            session()->setFlashdata('failed', 'Data Produk Gagal Ditambahkan');
+            return redirect()->back()->withInput();
+        }
+    }
+
     // daftar kategori product
     public function kategori()
     {
