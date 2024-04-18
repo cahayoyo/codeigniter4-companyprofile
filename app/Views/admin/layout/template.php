@@ -11,6 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="<?= base_url('asset-admin'); ?>/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!--untuk section css custom -->
+    <?= $this->renderSection('style') ?>
 </head>
 
 <body class="sb-nav-fixed">
@@ -75,6 +78,8 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="<?= base_url('asset-admin'); ?>/js/datatables-simple-demo.js"></script>
+    <!--untuk section js custom -->
+    <?= $this->renderSection('script') ?>
 </body>
 
 </html>

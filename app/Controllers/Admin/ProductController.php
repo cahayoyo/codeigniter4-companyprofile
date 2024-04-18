@@ -35,6 +35,7 @@ class ProductController extends BaseController
             'nama_product' => 'required',
             'kategori_slug' => 'required',
             'deskripsi' => 'required',
+            'gambar_product' => 'max_size[gambar_product,2048]|uploaded[gambar_product]|is_image[gambar_product]|mime_in[gambar_product,image/png,image/jpg]|ext_in[gambar_product,png,jpg,jpeg]'
         ]);
 
         // jika validasi gagal
@@ -46,11 +47,21 @@ class ProductController extends BaseController
         // membuat slug
 
         $slug_product = url_title($this->request->getPost('nama_product'), '-', TRUE);
+
+        // ambil file gambar
+        $gambar = $this->request->getFile('gambar_product');
+
+        // ambil random nama file
+        $namaGambar = $gambar->getRandomName('gambar_product');
+
+        // pindahkan file
+        $gambar->move(WRITEPATH . '../public/asset-admin/img', $namaGambar);
+
         $this->ProductModel->insert([
             'nama_product' => esc($this->request->getPost('nama_product')),
             'kategori_slug' => esc($this->request->getPost('kategori_slug')),
             'deskripsi' => esc($this->request->getPost('deskripsi')),
-            'gambar_product' => esc($this->request->getPost('gambar_product')),
+            'gambar_product' => $namaGambar,
             'slug_product' => $slug_product,
         ]);
 
