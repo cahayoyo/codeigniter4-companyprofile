@@ -42,6 +42,19 @@ class ProductController extends BaseController
             session()->setFlashdata('failed', 'Data Produk Gagal Ditambahkan');
             return redirect()->back()->withInput();
         }
+        // jika data valid
+        // membuat slug
+
+        $slug_product = url_title($this->request->getPost('nama_product'), '-', TRUE);
+        $this->ProductModel->insert([
+            'nama_product' => esc($this->request->getPost('nama_product')),
+            'kategori_slug' => esc($this->request->getPost('kategori_slug')),
+            'deskripsi' => esc($this->request->getPost('deskripsi')),
+            'gambar_product' => esc($this->request->getPost('gambar_product')),
+            'slug_product' => $slug_product,
+        ]);
+
+        return redirect()->to(base_url('daftar-product'))->with('success', 'Data Product Berhasil Ditambahkan');
     }
 
     // daftar kategori product

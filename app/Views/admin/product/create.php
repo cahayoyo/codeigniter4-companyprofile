@@ -78,8 +78,8 @@
                                     <?php endif; ?>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="gambar_produk" class="form-label">Gambar Produk</label>
-                                    <input type="text" name="gambar_produk" id="gambar_produk" class="form-control">
+                                    <label for="gambar_product" class="form-label">Gambar Product</label>
+                                    <input type="text" name="gambar_product" id="gambar_product" class="form-control">
                                 </div>
                                 <div class="justify-content-end d-flex">
                                     <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
