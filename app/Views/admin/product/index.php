@@ -46,13 +46,15 @@
                                             <td><?= $product->nama_product; ?></td>
                                             <td><?= $product->kategori_slug; ?></td>
                                             <td><?= date('d/m/Y H:i:s', strtotime($product->tanggal_input)); ?></td>
-                                            <td width="15%" class="text-center">
+                                            <td width="20%" class="text-center">
+                                                <a href="" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i>
+                                                    Detail</a>
                                                 <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#ubahModal<?= $product->id_product; ?>"><i
-                                                        class=" fas fa-edit"></i>Ubah</button>
+                                                        class=" fas fa-edit"></i> Ubah</button>
                                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                                     data-bs-target="#hapusModal<?= $product->id_product; ?>"><i
-                                                        class="fas fa-trash-alt"></i>Hapus</button>
+                                                        class="fas fa-trash-alt"></i> Hapus</button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

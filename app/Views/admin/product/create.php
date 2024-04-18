@@ -40,7 +40,7 @@
                                         <label for="nama_product" class="form-label">Nama Product</label>
                                         <input type="text" name="nama_product" id="nama_product"
                                             class="form-control <?= $validation->hasError('nama_product') ? 'is-invalid' : '' ?>"
-                                            required>
+                                            value="<?= old('nama_product') ?>">
 
                                         <?php if ($validation->hasError('nama_product')): ?>
                                             <div class="invalid-feedback">
@@ -53,11 +53,17 @@
                                         <select name="kategori_slug" id="kategori_slug"
                                             class="form-select <?= $validation->hasError('kategori_slug') ? 'is-invalid' : '' ?>"
                                             required>
-                                            <option value="">Pilih Kategori</option>
+                                            <option value="" hidden>Pilih Kategori</option>
                                             <?php foreach ($kategori_product as $kategori): ?>
-                                                <option value="<?= $kategori->slug_kategori; ?>">
-                                                    <?= $kategori->nama_kategori ?>
-                                                </option>
+                                                <?php if (old('kategori_slug') == $kategori->slug_kategori): ?>
+                                                    <option value="<?= $kategori->slug_kategori; ?>" selected>
+                                                        <?= $kategori->nama_kategori; ?>
+                                                    </option>
+                                                <?php else: ?>
+                                                    <option value="<?= $kategori->slug_kategori; ?>">
+                                                        <?= $kategori->nama_kategori; ?>
+                                                    </option>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
                                         </select>
 
@@ -72,7 +78,7 @@
                                     <label for="deskripsi" class="form-label">Deskripsi</label>
                                     <textarea name="deskripsi" id="deskripsi" rows="10" cols="30"
                                         class="form-control <?= $validation->hasError('deskripsi') ? 'is-invalid' : '' ?>"
-                                        required></textarea>
+                                        required><?= old('deskripsi') ?></textarea>
 
                                     <?php if ($validation->hasError('deskripsi')): ?>
                                         <div class="invalid-feedback">
@@ -108,6 +114,11 @@
     <?= $this->endSection(); ?>
 
     <?= $this->Section('script') ?>
+    <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('deskripsi');
+    </script>
+
     <script>
         function previewImg() {
             const gambar = document.querySelector('#gambar_product');
